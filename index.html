@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style1.css">
+    <link rel="stylesheet" type="text/css" href="css/component.css" />
+    <script src="particles.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.2/Draggable.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.2/ScrollToPlugin.min.js"></script>
+    </script>
+</head>
+<body>
+    <section class="section section--menu" id="Horatio">
+        <span class="link-copy"></span>
+        <nav class="menu menu--horatio">
+                <ul class="menu__list">
+                        <li class="menu__item menu__item--current"><a class="menu__link">Home</a></li>
+                        <li class="menu__item"><a class="menu__link">Portfolio</a></li>
+                        <li class="menu__item"><a class="menu__link">Blog</a></li>
+                        <li class="menu__item"><a class="menu__link">Shop</a></li>
+                        <li class="menu__item"><a class="menu__link">Contact</a></li>
+                </ul>
+        </nav>
+    </section>
+    <script src="js/classie.js"></script>
+		<script src="js/clipboard.min.js"></script>
+		<script>
+		(function() {
+			[].slice.call(document.querySelectorAll('.menu')).forEach(function(menu) {
+				var menuItems = menu.querySelectorAll('.menu__link'),
+					setCurrent = function(ev) {
+						ev.preventDefault();
+
+						var item = ev.target.parentNode; // li
+
+						// return if already current
+						if (classie.has(item, 'menu__item--current')) {
+							return false;
+						}
+						// remove current
+						classie.remove(menu.querySelector('.menu__item--current'), 'menu__item--current');
+						// set current
+						classie.add(item, 'menu__item--current');
+					};
+
+				[].slice.call(menuItems).forEach(function(el) {
+					el.addEventListener('click', setCurrent);
+				});
+			});
+
+			[].slice.call(document.querySelectorAll('.link-copy')).forEach(function(link) {
+				link.setAttribute('data-clipboard-text', location.protocol + '//' + location.host + location.pathname + '#' + link.parentNode.id);
+				new Clipboard(link);
+				link.addEventListener('click', function() {
+					classie.add(link, 'link-copy--animate');
+					setTimeout(function() {
+						classie.remove(link, 'link-copy--animate');
+					}, 300);
+				});
+			});
+		})(window);
+		</script>
+    <div id="loader"></div>
+    <div id="particles-js"></div>
+    <style>
+        /* For best practice, move CSS below to an external CSS file. */
+        @keyframes fadeinall {
+        0% {
+          opacity: 1; }
+        97% {
+          opacity: 0; }
+        98% {
+          opacity: 0;
+          -webkit-transform: translateY(0);
+          transform: translateY(0); }
+        99% {
+          opacity: 0;
+          -webkit-transform: translateY(-100%);
+          transform: translateY(-100%); }
+        100% {
+          opacity: 0;
+          z-index: -1; } }
+        #loader {
+          opacity: 1;
+          position: fixed;
+          width: 100%;
+          height: 100%;
+          -webkit-transform: translateY(0);
+          -ms-transform: translateY(0);
+          transform: translateY(0);
+          background-color: #000000;
+          z-index: 999;
+          -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+          -webkit-animation: fadeinall 1s normal both;
+          animation: fadeinall 1s normal both;
+          -webkit-animation-delay: 0.9s;
+          animation-delay: 0.9s; }
+      </style>
+      <div class="title">
+            </div>
+    <script src="app.js"></script>
+    <script type="text/javascript">
+        window.onload = function(){
+          setTimeout(function(){
+            document.getElementById("loader").remove();
+          },1000);
+        };
+        </script>
+    <div class="s1">
+        <div class="orange"></div>
+        <div class="texts1 anim-typewriter">
+            <div class="line line1">
+                <p>01 </p>
+                <div class="textcontain">
+                    <h2> Hi, I'm <span>Simran</span> ! </h2>
+                    <div class="hide"></div>
+                </div>
+            </div>
+            <div class="line line2">
+                <p>02</p>
+                <div class="textcontain">
+                    <h2> I <span>design</span> and <span>develop web App ,</span>  </h2>
+                    <div class="hide"></div>
+                </div>
+            </div>
+            <div class="line line3">
+                <p>03</p>
+                <div class="textcontain">
+                    <h2> <span> web sites</span> . </h2>
+                    <div class="hide"></div>
+                </div>
+            </div>
+        </div>
+        <h4>I also design your branding, logo...<style>
+            h4{
+                color: rgb(236, 98, 5);
+            }
+        </style></h4>
+    </div>
+    <script></script>
+    <script>
+        //loader
+        window.onload = function() {
+            tl = new gsap.timeline()
+                .from(window, {
+                    duration: .5,
+                    scrollTo: ".faq1",
+                    onStart: () => {
+                        document.documentElement.style.scrollBehavior = "auto";
+                    },
+                    onComplete: () => {
+                        $(".lback").removeClass('chargement');
+                        document.documentElement.style.scrollBehavior = "smooth", $(".loading").addClass('en');
+                        $(".s1").addClass('s1content');
+                        $(".menu").addClass('menuh');
+                    }
+                })
+        };
+    </script>
+
+    
+</body>
+</html>

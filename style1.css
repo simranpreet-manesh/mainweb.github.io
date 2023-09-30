@@ -1,0 +1,901 @@
+
+body {
+    background-color: #f1eaea;
+    overflow: hidden;
+ 
+}
+
+
+:root {
+    --lien: #FF2E00;
+    --primary: #FF5C00;
+    --white: #ffffff;
+    --grey: #c3c3c3;
+    --content: calc((100vw/12)*9.5);
+    --small: calc((100vw/12)*0.5);
+    --mid: calc(100vw/12);
+    --big: calc((100vw/12)*2)
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 0;
+    animation: .3s ease-in-out
+}
+
+::-webkit-scrollbar:hover {
+    width: 10px;
+    transition: .7s ease-in-out
+}
+
+::-webkit-scrollbar-track {
+    background: 0 0;
+    animation: .3s ease-in-out
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--grey);
+    animation: .3s ease-in-out
+}
+
+::-webkit-scrollbar-thumb:hover {
+    transition: .5s ease-in-out;
+    border-radius: 5px;
+    background: var(--lien)
+}
+
+h5 {
+    font-size: 1.3rem;
+    margin: 0
+}
+
+h4 {
+    font-size: 1.5rem
+}
+
+a {
+    text-decoration: none;
+    color: #000
+}
+
+.contact_back {
+    top: 0;
+    right: 0;
+    position: fixed;
+    z-index: 1000;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, .406);
+    display: none
+}
+
+.contact {
+    top: 0;
+    right: 0;
+    position: fixed;
+    background-color: var(--white);
+    height: 100vh;
+    box-shadow: 5px 5px 40px 0 rgba(255, 0, 0, .101);
+    z-index: 1000;
+    margin-right: -100%;
+    transition: .5s;
+    transition-timing-function: ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center
+}
+
+.cactive {
+    margin-right: 0;
+    transition: .5s;
+    transition-timing-function: ease
+}
+
+.cbactive {
+    display: block;
+    transition: .5s;
+    cursor: pointer
+}
+
+.contact .retour {
+    position: absolute;
+    top: 5px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin: 20px;
+    transition: .2s ease-in-out;
+    background-color: #fff
+}
+
+.contact .retour:hover {
+    transition: .2s ease-in-out;
+    transform: translateX(-10px)
+}
+
+.contact .retour img {
+    height: 34px;
+    margin: 10px
+}
+
+.contact .num {
+    margin: 5vh 5vh;
+    border-bottom: 1px solid gray;
+    margin-bottom: 3vh
+}
+
+.contact .num a:hover {
+    color: var(--lien)
+}
+
+.contact h2 {
+    color: gray;
+    font-size: 18px
+}
+
+.contact h3 {
+    width: fit-content;
+    font-size: 22px;
+    font-weight: 400;
+    line-height: .8;
+    margin-left: 20px
+}
+
+.contact form {
+    position: relative
+}
+
+.contact ::placeholder {
+    color: #000;
+    opacity: 1
+}
+
+.contact :-ms-input-placeholder {
+    color: #000
+}
+
+.contact ::-ms-input-placeholder {
+    color: #000
+}
+
+.contact .input_group {
+    margin: 1vh 5vh
+}
+
+.contact input,
+.contact textarea {
+    font-size: 18px;
+    padding: 10px;
+    border-radius: 10px;
+    border: var(--grey) solid 2px;
+    width: 30vw;
+    max-width: 30vw;
+    font-family: Inconsolata, monospace
+}
+
+.contact textarea {
+    height: 100px;
+    font-size: 18px
+}
+
+.contact #err {
+    color: #ff2e00;
+    margin-left: 5vh
+}
+
+.contact #succ {
+    color: green;
+    margin-left: 5vh
+}
+
+.contact .cour {
+    color: #000;
+    margin: 2px 4vh;
+    display: none;
+    opacity: 0;
+    transition-property: opacity;
+    transition: .3s;
+    font-size: 15px
+}
+
+.contact .tactive {
+    transition: .3s;
+    opacity: 1;
+    display: inline
+}
+
+.contact input:focus,
+.contact textarea:focus {
+    outline: 0;
+    border-bottom: 2px solid var(--primary)
+}
+
+.contact button[type=submit] {
+    background-color: var(--lien);
+    border: none;
+    color: var(--white);
+    padding: 10px 22px;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 15px;
+    font-size: 20px;
+    transform: scale(1.2);
+    margin: 10px;
+    transition: .2s;
+    float: right
+}
+
+.contact button[type=submit]:hover {
+    font-size: 17px;
+    transform: scale(1.2);
+    transition: .2s;
+    margin: 10px;
+    box-shadow: 5px 5px 40px 0 rgba(255, 0, 0, .101)
+}
+
+.loading {
+    position: fixed;
+    background-color: var(--white);
+    height: 100vh;
+    width: 100vw;
+    z-index: 100;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none
+}
+
+.loading .lback,
+.loading .top {
+    height: 30vh;
+    width: 30vw;
+    grid-column: 1;
+    grid-row: 1;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.loading .hide {
+    text-align: right;
+    height: 30vh;
+    width: 30vw;
+    grid-column: 1;
+    grid-row: 1;
+    background-color: #fff;
+    animation-timing-function: ease-in-out
+}
+
+.loading .lback {
+    background-image: url(../img/load.svg)
+}
+
+.chargement {
+    animation: clign 1s infinite
+}
+
+.loading .top {
+    background-image: url(../img/top.svg)
+}
+
+@keyframes load {
+    0% {
+        margin-left: 0;
+        width: 30vw
+    }
+    100% {
+        margin-left: 100%;
+        width: 0
+    }
+}
+
+@keyframes clign {
+    0% {
+        opacity: 1
+    }
+    100% {
+        opacity: 0
+    }
+}
+
+@keyframes app {
+    99% {
+        opacity: 0
+    }
+    100% {
+        opacity: 1
+    }
+}
+
+@keyframes des {
+    99% {
+        opacity: 1
+    }
+    100% {
+        opacity: 0;
+        display: none
+    }
+}
+
+@keyframes scroll {
+    99% {
+        margin: 0;
+        height: 100%;
+        overflow: hidden
+    }
+    100% {
+        margin: 0;
+        height: 100%;
+        overflow: visible
+    }
+}
+
+.menu {
+    width: calc((100vw/12)*2.5);
+    opacity: 0;
+    top: 0;
+    position: fixed;
+    border-radius: 0;
+    height: 100%;
+    background-color: #fff;
+    text-align: center;
+    z-index: 100;
+    transition: .2s ease-in-out;
+    left: 0;
+    box-shadow: 5px 5px 40px 0 rgba(255, 0, 0, .101);
+    left: 1%
+}
+
+#imgprofil {
+    margin-top: 10%;
+    width: 20vh;
+    max-width: var(--big)
+}
+
+.men {
+    margin: 20% auto;
+    width: fit-content
+}
+
+.men a {
+    height: 30px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    color: #d80d0d;
+    border-radius: 15px;
+    white-space: nowrap;
+    margin-right: 15px;
+    cursor: pointer
+}
+
+.men .ang {
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto
+}
+
+.men h5 {
+    padding-right: 15px
+}
+
+.men h4 {
+    color: #f80404
+}
+
+.men .active {
+    color: var(--lien);
+    transition: 50ms ease-in-out
+}
+
+.click {
+    pointer-events: none
+}
+
+.men .active h5 {
+    color: var(--lien);
+    box-shadow: inset 4px 4px 15px 0 #00000018;
+    transition: 50ms ease-in-out;
+    border-radius: 15px;
+    padding: 10px 15px;
+    text-align: left
+}
+
+.men img {
+    margin-right: 5%;
+    height: 40px
+}
+
+.men .drag {
+    display: none
+}
+
+.reseaux {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 40% 40%;
+    padding-bottom: 5vh;
+    justify-items: stretch;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin-left: calc((100vw/12)*.5);
+    width: calc((100vw/12)*1.5)
+}
+
+.reseaux img {
+    padding: 2vh;
+    max-height: 5vh
+}
+
+.reseaux a {
+    display: flex;
+    align-items: center
+}
+
+.reseaux .rleft {
+    justify-content: flex-end
+}
+
+.reseaux a:hover {
+    transform: scale(1.3);
+    transition: 50ms ease-in-out
+}
+
+#boutontr:hover {
+    transform: scale(1.2);
+    transition: 150ms ease-in-out;
+    box-shadow: none;
+    cursor: pointer
+}
+
+#boutontr {
+    opacity: 0;
+    z-index: 100;
+    position: fixed;
+    top: 5%;
+    right: 5%;
+    background-color: var(--lien);
+    border-radius: 30px;
+    padding: 5px 25px;
+    display: flex;
+    transition: 150ms ease-in-out;
+    box-shadow: 5px 5px 40px 0 rgba(255, 0, 0, .3);
+    overflow: hidden;
+    animation: app 1s forwards
+}
+
+#boutontr.active {
+    top: 40%;
+    right: 10%;
+    scale: 1.3;
+    transition: .3s ease-in-out;
+    bottom: inherit
+}
+
+#boutontr h4 {
+    color: white;
+    font-weight: 700;
+    margin: 0;
+    line-height: 150%
+}
+
+#boutontr .ar {
+    display: flex;
+    width: 20px
+}
+
+#boutontr .ar img {
+    width: 200px;
+    margin-left: -175px
+}
+
+.content {
+    animation: app 1s forwards;
+    opacity: 0;
+    margin-left: auto;
+    margin-right: 0
+}
+
+.menu:hover {
+    box-shadow: 5px 5px 40px 0 rgba(255, 0, 0, .101);
+    left: 1%;
+    transition: .2s ease-in-out
+}
+
+.menuh {
+    box-shadow: inherit;
+    opacity: 1;
+    left: 0;
+    transition: .2s ease-in-out
+}
+
+@keyframes menu {
+    0% {
+        width: 0
+    }
+    100% {
+        width: calc((100vw/12)*2.5)
+    }
+}
+
+.progress-container {
+    width: var(--content);
+    height: 4px;
+    background: #ccc;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 10;
+    background-color: #f1f1f1
+}
+
+.progress-bar {
+    height: 4px;
+    background: var(--primary);
+    width: 0;
+    transition: width .2s ease-out
+}
+
+.sec1 {
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    margin-left: auto;
+    margin-right: 0;
+    width: var(--content)
+}
+
+.sec1 .back {
+    height: 100%;
+    width: 100%;
+    z-index: 3
+}
+
+.sec1 img {
+    height: 7vh;
+    z-index: -2
+}
+
+.sec1 .item1 {
+    position: absolute;
+    top: 10%;
+    left: 40%
+}
+
+.sec1 .it {
+    opacity: .4
+}
+
+.sec1 .item2 {
+    position: absolute;
+    top: 35%;
+    left: 15%
+}
+
+.sec1 .item3 {
+    position: absolute;
+    top: 25%;
+    left: 75%
+}
+
+.sec1 .item4 {
+    position: absolute;
+    top: 55%;
+    left: 85%
+}
+
+.sec1 .item5 {
+    position: absolute;
+    top: 75%;
+    left: 45%
+}
+
+.sec1 .item6 {
+    position: absolute;
+    top: 70%;
+    left: 15%
+}
+
+.sec1 .item7 {
+    position: absolute;
+    top: 75%;
+    left: 75%
+}
+
+.sec1 .item8 {
+    position: absolute;
+    top: 15%;
+    left: 60%
+}
+
+.s1content {
+    pointer-events: none;
+    font-family: Inconsolata, monospace;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: grid;
+    z-index: 2
+}
+
+.texts1 {
+    border-radius: 30px;
+    padding: 30px;
+    background-color: #fff;
+    border: var(--grey) solid 2px;
+    line-height: 275%;
+    grid-column: 1;
+    grid-row: 1
+}
+
+.line {
+    display: flex
+}
+
+.texts1 .line1 h2::before,
+.texts1 .line2 h2::before {
+    content: "<";
+    color: gray;
+    font-weight: 400
+}
+
+.texts1 .line1 h2::after,
+.texts1 .line3 h2::after {
+    content: ">";
+    color: gray;
+    font-weight: 400
+}
+
+.texts1 .line3 h2 {
+    padding-left: 1.8rem
+}
+
+.orange {
+    content: "";
+    width: 80px;
+    height: 80px;
+    margin-left: -30px;
+    margin-top: -30px;
+    margin-right: 5px;
+    background-color: #ff7a00;
+    border-radius: 15px;
+    z-index: -1;
+    grid-row: 1;
+    grid-column: 1
+}
+
+.textcontain {
+    overflow: hidden;
+    display: grid
+}
+
+.texts1 h2 {
+    margin: 0;
+    font-size: 1.8rem;
+    grid-row: 1;
+    grid-column: 1;
+    padding-right: 10px;
+    white-space: nowrap
+}
+
+.texts1 h2 img {
+    height: 1.2rem;
+    margin-left: -5px
+}
+
+.texts1 p {
+    margin: 0;
+    font-size: 1.5rem;
+    margin-right: 20px;
+    color: gray;
+    opacity: 0
+}
+
+.texts1 span {
+    color: var(--primary)
+}
+
+.btnsec1 {
+    align-items: center;
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    border-radius: 30px;
+    padding: 10px 13px;
+    background-color: var(--white);
+    grid-column: 1;
+    grid-row: 1;
+    z-index: 1;
+    transition: .2s ease-in-out;
+    opacity: 0;
+    border: 0 solid var(--grey);
+    box-shadow: 5px 5px 40px 0 rgba(255, 0, 0, .084);
+    cursor: pointer
+}
+
+.btnsec1:hover {
+    box-shadow: none;
+    padding: 5px;
+    transition: .2s ease-in-out;
+    border: 0 solid var(--grey)
+}
+
+.btnsec1:hover>img {
+    transition: 2s ease-in-out;
+    animation-play-state: paused;
+    animation-timing-function: ease-in-out;
+    padding-bottom: 3px
+}
+
+.btnsec1 p {
+    margin: 0;
+    margin-left: 10px;
+    white-space: nowrap;
+    font-size: 17px;
+    line-height: 5vh
+}
+
+.btnsec1 img {
+    height: inherit;
+    background-color: var(--lien);
+    height: 4vh;
+    padding: 0 .5vh 1vh .5vh;
+    border-radius: 50px;
+    margin-left: 20px;
+    aspect-ratio: 1.1;
+    transition: .2s ease-in-out
+}
+
+.s1content .line .hide {
+    margin-top: 1%;
+    margin-left: auto;
+    margin-right: 0;
+    grid-row: 1;
+    grid-column: 1;
+    height: 80%;
+    width: 100%;
+    background-color: #fff;
+    animation: typing 1s forwards, blink .15s step-end infinite alternate, opt 1.5s forwards;
+    border-left: 0 solid #000
+}
+
+.s1content .line1 p {
+    opacity: 1
+}
+
+.s1content .line2 .hide {
+    animation-delay: 1.5s
+}
+
+.s1content .line2 p {
+    animation: opl 1.4s forwards
+}
+
+.s1content .line3 .hide {
+    animation-delay: 3s
+}
+
+.s1content .line3 p {
+    animation: opl 2.8s forwards
+}
+
+@keyframes typing {
+    0% {
+        width: 100%
+    }
+    30% {
+        width: 100%
+    }
+    50% {
+        width: 30%
+    }
+    100% {
+        width: 0%
+    }
+}
+
+@keyframes opt {
+    01% {
+        opacity: 1;
+        border-left-width: 2px
+    }
+    99% {
+        opacity: 1;
+        border-left-width: 2px
+    }
+    100% {
+        opacity: 0
+    }
+}
+
+@keyframes ops {
+    01% {
+        opacity: 1;
+        border-left-width: 2px
+    }
+    99% {
+        opacity: 1;
+        border-left-width: 2px
+    }
+    100% {
+        opacity: 1
+    }
+}
+
+@keyframes blink {
+    50% {
+        border-color: transparent
+    }
+    100% {
+        border-color: transparent
+    }
+}
+
+@keyframes opi {
+    01% {
+        opacity: 1
+    }
+    99% {
+        opacity: 1
+    }
+    100% {
+        opacity: 0
+    }
+}
+
+@keyframes opl {
+    99% {
+        opacity: 0
+    }
+    100% {
+        opacity: 1
+    }
+}
+
+.s1content h4 {
+    opacity: 0;
+    padding: 20px;
+    animation: 3s up 1s forwards
+}
+
+.btnsec1 {
+    animation-timing-function: ease-in-out;
+    animation: 2s up 1s forwards;
+    animation-delay: 3s
+}
+
+.btnsec1 img {
+    animation-timing-function: ease-in-out;
+    animation: animdown .7s infinite alternate
+}
+
+@keyframes up {
+    85% {
+        opacity: 0;
+        margin-top: 20vh
+    }
+    100% {
+        opacity: 1;
+        margin-top: 0
+    }
+}
+
+@keyframes animdown {
+    0% {
+        transform: translate(0, 20%);
+        padding-bottom: 2px
+    }
+    50% {
+        padding-bottom: 1vh;
+        transform: translate(0, 0)
+    }
+    100% {
+        padding-bottom: 1vh;
+        transform: translate(0, 0)
+    }
+}
+
